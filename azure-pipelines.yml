@@ -1,0 +1,21 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+
+steps:
+- script: |
+    #export DT_OAUTH_CLIENT_SECRET_ENV_VAR=$(DT_OAUTH_CLIENT_SECRET_ENV_VAR)
+    #export DT_TOKEN_ENV=$(DT_TOKEN_ENV)
+    #sed -i "s/{{service}}/${SERVICE_NAME}/g" config-as-code/configs.yaml
+    chmod +x ./monaco
+
+    ./monaco deploy manifest.yaml
+  displayName: 'Run Monaco'
