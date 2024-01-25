@@ -17,5 +17,5 @@ steps:
     #chmod +x ./monaco
 
     #./monaco deploy manifest.yaml
-    echo docker
+    docker pull dynatrace/dynatrace-configuration-as-code:latest
   displayName: 'Run Monaco'
