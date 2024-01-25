@@ -13,9 +13,12 @@ steps:
 - bash: |
     docker pull dynatrace/dynatrace-configuration-as-code:latest
     docker run --name monaco dynatrace/dynatrace-configuration-as-code:latest
-    docker exec monaco monaco deploy --dry-run manifest.yaml
+  displayName: 'Run Monaco'
+- bash: |
+    docker ps
+    docker exec monaco monaco deploy manifest.yaml
   env:
     TOKEN: $(DT_TOKEN_ENV)
     OAUTH_CLIENT_ID: $(DT_OAUTH_CLIENT_ID)
     OAUTH_CLIENT_SECRET: $(DT_OAUTH_CLIENT_SECRET)
-  displayName: 'Run Monaco'
+  displayName: 'Deploy mani'
