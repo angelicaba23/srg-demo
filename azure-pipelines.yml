@@ -16,6 +16,7 @@ steps:
     --mount type=bind,src="project-monaco",target=/monaco \
     dynatrace/dynatrace-configuration-as-code:latest deploy -d manifest.yaml
   env:
-    DT_TOKEN_ENV: $(DT_TOKEN_ENV)
-    DT_OAUTH_CLIENT_SECRET: $(DT_OAUTH_CLIENT_SECRET)
+    TOKEN: $(DT_TOKEN_ENV)
+    OAUTH_CLIENT_ID: $(DT_OAUTH_CLIENT_ID)
+    OAUTH_CLIENT_SECRET: $(DT_OAUTH_CLIENT_SECRET)
   displayName: 'Run Monaco'
