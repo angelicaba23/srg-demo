@@ -18,4 +18,8 @@ steps:
 
     #./monaco deploy manifest.yaml
     docker pull dynatrace/dynatrace-configuration-as-code:latest
+    docker run \
+    --env API_TOKEN=$(DT_TOKEN_ENV)\
+    --mount type=bind,src="project-monaco",target=/monaco \
+    dynatrace/dynatrace-configuration-as-code:latest deploy -d manifest.yaml
   displayName: 'Run Monaco'
