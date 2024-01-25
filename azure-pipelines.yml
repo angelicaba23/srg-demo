@@ -13,7 +13,7 @@ steps:
 - bash: |
     docker pull dynatrace/dynatrace-configuration-as-code:latest
     docker run \
-    --mount type=bind,src="project-monaco",target=/monaco \
+    --mount type=bind,src="./project-monaco",target=/monaco \
     dynatrace/dynatrace-configuration-as-code:latest deploy -d manifest.yaml
   env:
     TOKEN: $(DT_TOKEN_ENV)
