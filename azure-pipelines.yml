@@ -9,13 +9,13 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-
 steps:
 - script: |
     #export DT_OAUTH_CLIENT_SECRET_ENV_VAR=$(DT_OAUTH_CLIENT_SECRET_ENV_VAR)
     #export DT_TOKEN_ENV=$(DT_TOKEN_ENV)
     #sed -i "s/{{service}}/${SERVICE_NAME}/g" config-as-code/configs.yaml
-    chmod +x ./monaco
+    #chmod +x ./monaco
 
-    ./monaco deploy manifest.yaml
+    #./monaco deploy manifest.yaml
+    docker
   displayName: 'Run Monaco'
