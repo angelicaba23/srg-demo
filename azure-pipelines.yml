@@ -17,5 +17,5 @@ steps:
     #chmod +x ./monaco
 
     #./monaco deploy manifest.yaml
-    docker
+    echo docker
   displayName: 'Run Monaco'
