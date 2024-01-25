@@ -13,7 +13,7 @@ steps:
 - bash: |
     docker pull dynatrace/dynatrace-configuration-as-code:latest
     docker run dynatrace/dynatrace-configuration-as-code:latest
-    monaco  deploy --dry-run manifest.yaml
+    monaco deploy --dry-run manifest.yaml
   env:
     TOKEN: $(DT_TOKEN_ENV)
     OAUTH_CLIENT_ID: $(DT_OAUTH_CLIENT_ID)
