@@ -12,6 +12,7 @@ pool:
 steps:
 - bash: |
     docker pull dynatrace/dynatrace-configuration-as-code:latest
+    ll
     docker run --name monaco \
     dynatrace/dynatrace-configuration-as-code:latest deploy -d /monaco-demo/manifest.yaml
   env:
