@@ -1,0 +1,11 @@
+configs:
+- id: service_evaluation_baseline
+  config:
+    name: service_evaluation_baseline
+    template: srg.json
+    skip: false
+  type:
+    settings:
+      schema: app:dynatrace.site.reliability.guardian:guardians
+      schemaVersion: 1.0.2
+      scope: environment

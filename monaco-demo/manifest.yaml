@@ -8,7 +8,7 @@ environmentGroups:
     environments:
       - name: development-environment
         url:
-          value: "https://ray30130.dev.apps.dynatracelabs.com"
+          value: https://ray30130.dev.apps.dynatracelabs.com/
         auth:
           token:
             name: TOKEN
@@ -17,5 +17,6 @@ environmentGroups:
               name: OAUTH_CLIENT_ID
             clientSecret:
               name: OAUTH_CLIENT_SECRET
-          #tokenEndpoint: https://sso-dev.dynatracelabs.com/sso/oauth2/token
+            tokenEndpoint:
+              value: https://sso-dev.dynatracelabs.com/sso/oauth2/token
           
