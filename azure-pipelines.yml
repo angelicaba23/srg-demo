@@ -24,8 +24,7 @@ jobs:
     displayName: 'Pull Docker Image'
 
   - script: |
-      docker run -it --entrypoint /bin/sh dynatrace/dynatrace-configuration-as-code
-      monaco version
+      docker run -it --entrypoint monaco dynatrace/dynatrace-configuration-as-code version
       sleep 10
     displayName: 'Run Docker Container'
 
