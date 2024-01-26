@@ -1,4 +1,3 @@
-
 trigger:
 - main
 
@@ -9,19 +8,10 @@ jobs:
 
   steps:
 
-  - task: Docker@2
+  - script: docker pull dynatrace/dynatrace-configuration-as-code:latest
     displayName: 'Pull Docker Image'
-    inputs:
-      command: 'pull'
-      repository: 'dynatrace/dynatrace-configuration-as-code'
-      tags: 'latest'
-
-  - task: Docker@2
+    
+  - script: |
+      docker run dynatrace/dynatrace-configuration-as-code deploy -d manifest.yaml
+      sleep 10
     displayName: 'Run Docker Container'
-    inputs:
-      command: 'run'
-      repository: 'dynatrace/dynatrace-configuration-as-code'
-      tags: 'latest'
-      #options: '-e API_TOKEN=XXX'  # Set environment variable
-      containerCommand: 'deploy -d manifest.yaml'  # Specify the command to run inside the container
-      failOnStderr: true  # Fail the task if the command inside the container returns an error
