@@ -6,55 +6,55 @@
     ],
     "objectives": [
       {
-        "name": "service: {{.service_name}}_percentil_90",
+        "name": "service: svc_name_percentil_90",
         "description": "Percentil 90:  90% de las peticiones se encuentran dentro de los tiempos de respuesta establecidos en los umbrales ",
         "objectiveType": "DQL",
-        "dqlQuery": "fetch events\n| filter event.name == \"validation_{{.test_type}}_{{.service_name}}\"\n| fields percentil_90 = toDouble(response_time)/1000\n| limit 1",
+        "dqlQuery": "fetch events\n| filter event.name == \"validation_test_type_svc_name\"\n| fields percentil_90 = toDouble(response_time)/1000\n| limit 1",
         "comparisonOperator": "LESS_THAN_OR_EQUAL",
         "target": 1,
         "warning": 0
       },
       {
-        "name": "service: {{.service_name}}_numero_de_transacciones (tmp)",
+        "name": "service: svc_name_numero_de_transacciones (tmp)",
         "description": "Numero de transaciones  logradas en el rango de la ejecución  de la pruebas del microservcio\nTPM ( Transaciones por minuto)",
         "objectiveType": "DQL",
-        "dqlQuery": "fetch events\n| filter event.name == \"validation_{{.test_type}}_{{.service_name}}\"\n| fields request_count = toDouble(request_count)/1000\n| limit 1",
+        "dqlQuery": "fetch events\n| filter event.name == \"validation_test_type_svc_name\"\n| fields request_count = toDouble(request_count)/1000\n| limit 1",
         "comparisonOperator": "GREATER_THAN_OR_EQUAL",
         "target": 1,
         "warning": 0
       },
       {
-        "name": "service: {{.service_name}}_tasa_de_fallos",
+        "name": "service: svc_name_tasa_de_fallos",
         "description": "Porcentaje de errores presentados durante la prueba del microservcio",
         "objectiveType": "REFERENCE_SLO",
-        "referenceSlo": "func:slo.{{.slo_metricName_tasa_de_fallos}}",
+        "referenceSlo": "func:slo.slo_metricName_tasa_de_fallos",
         "comparisonOperator": "LESS_THAN_OR_EQUAL",
         "target": 1,
         "warning": 0
       },
       {
-        "name": "infra: {{.service_name}}_CPU",
+        "name": "infra: svc_name_CPU",
         "description": "Porcentaje de utilización de recursos de CPU microservcio",
         "objectiveType": "REFERENCE_SLO",
-        "referenceSlo": "func:slo.{{.slo_metricName_infra_cpu}}",
+        "referenceSlo": "func:slo.slo_metricName_infra_cpu",
         "comparisonOperator": "LESS_THAN_OR_EQUAL",
         "target": 1,
         "warning": 0
       },
       {
-        "name": "infra: {{.service_name}}_memory",
+        "name": "infra: svc_name_memory",
         "description": "Porcentaje de utilización de recursos de memoria microservcio",
         "objectiveType": "REFERENCE_SLO",
-        "referenceSlo": "func:slo.{{.slo_metricName_infra_memory}}",
+        "referenceSlo": "func:slo.slo_metricName_infra_memory",
         "comparisonOperator": "LESS_THAN_OR_EQUAL",
         "target": 1,
         "warning": 0
       },
       {
-        "name": "infra: {{.service_name}}_disk",
+        "name": "infra: svc_name_disk",
         "description": "Porcentaje de utilización de recursos de disk del microservcio",
         "objectiveType": "REFERENCE_SLO",
-        "referenceSlo": "func:slo.{{.slo_metricName_infra_disk}}",
+        "referenceSlo": "func:slo.slo_metricName_infra_disk",
         "comparisonOperator": "LESS_THAN_OR_EQUAL",
         "target": 1,
         "warning": 0
