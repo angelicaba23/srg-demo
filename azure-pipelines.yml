@@ -1,6 +1,9 @@
 trigger:
 - main
 
+pr:
+- main
+
 jobs:
 - job: RunContainerTests
   pool:
@@ -30,6 +33,7 @@ jobs:
     displayName: 'Run Docker Container'
 
   - script: |
+      docker ps | grep my_container | grep -q " Up " || exit 1
       docker exec my_container moanco deploy manifest.yaml
     displayName: 'Execute moanco deploy inside Container'
 
