@@ -10,10 +10,6 @@ jobs:
     vmImage: 'ubuntu-latest'
 
   steps:
-  - task: UseDotNet@2
-    inputs:
-      packageType: 'sdk'
-      version: '3.x'
 
   - task: DockerInstaller@0
     inputs:
@@ -23,7 +19,6 @@ jobs:
   - script: docker pull dynatrace/dynatrace-configuration-as-code:latest
     displayName: 'Pull Docker Image'
     
-  - script: |
-      docker run --entrypoint /bin/sh dynatrace/dynatrace-configuration-as-code -c "echo $PATH && ls /usr/bin"
-    displayName: 'Inspect Docker Image'
+  - script: docker run --entrypoint /bin/sh dynatrace/dynatrace-configuration-as-code -c "find / -name monaco"
+    displayName: 'Search for Monaco executable'
 
