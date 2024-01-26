@@ -7,17 +7,19 @@ jobs:
     vmImage: 'ubuntu-latest'
 
   steps:
-    - task: CopyFiles@2
-    inputs:
-      SourceFolder: '$(Build.SourcesDirectory)' 
-      Contents: 'manifest.yaml'  
-      TargetFolder: '/doc'  
-      OverWrite: true
+  - checkout: self
+
+  - task: CopyFiles@2
     displayName: 'Copy manifest.yaml to Docker container'
+    inputs:
+      SourceFolder: '$(Build.SourcesDirectory)'  # Path to the root of your repository
+      Contents: 'manifest.yaml'  # Name of the file you want to copy
+      TargetFolder: '/monaco'  # Target folder in the Docker container
+      OverWrite: true
 
   - script: docker pull dynatrace/dynatrace-configuration-as-code:latest
     displayName: 'Pull Docker Image'
     
   - script: |
-      docker run --mount type=bind,src="/",target=/monaco dynatrace/dynatrace-configuration-as-code deploy -d /doc/manifest.yaml
+      docker run --mount type=bind,src="/",target=/monaco dynatrace/dynatrace-configuration-as-code deploy -d /monaco/manifest.yaml
     displayName: 'Run Docker Container'
