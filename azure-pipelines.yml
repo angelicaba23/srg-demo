@@ -16,8 +16,14 @@ jobs:
   - script: docker pull dynatrace/dynatrace-configuration-as-code:latest
     displayName: 'Pull Docker Image'
     
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: '$(Build.SourcesDirectory)'  # Assuming manifest.yaml is in the root of your repository
+      Contents: 'manifest.yaml'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    displayName: 'Copy manifest.yaml to staging directory'
+
   - script: |
-      docker run dynatrace/dynatrace-configuration-as-code deploy manifest.yaml
+      docker run -v $(Build.ArtifactStagingDirectory):/monaco dynatrace/dynatrace-configuration-as-code deploy /monaco/manifest.yaml
       sleep 10
     displayName: 'Run Docker Container'
-
