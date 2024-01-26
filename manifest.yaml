@@ -1,0 +1,21 @@
+manifestVersion: 1.0
+projects:
+  - name: config-as-a-code
+    path: project-monaco
+
+environmentGroups:
+  - name: development
+    environments:
+      - name: development-environment
+        url:
+          value: "https://ray30130.dev.apps.dynatracelabs.com"
+        auth:
+          token:
+            name: TOKEN
+          oAuth:
+            clientId:
+              name: OAUTH_CLIENT_ID
+            clientSecret:
+              name: OAUTH_CLIENT_SECRET
+          #tokenEndpoint: https://sso-dev.dynatracelabs.com/sso/oauth2/token
+          
