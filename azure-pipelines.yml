@@ -24,6 +24,6 @@ jobs:
     displayName: 'Copy manifest.yaml to staging directory'
 
   - script: |
-      docker run -v $(Build.ArtifactStagingDirectory):/monaco dynatrace/dynatrace-configuration-as-code deploy /monaco/manifest.yaml
+      docker run -v $(Build.SourcesDirectory)/.logs:/monaco/.logs -e TOKEN=$(DT_TOKEN) dynatrace/dynatrace-configuration-as-code deploy /monaco/manifest.yaml
       sleep 10
     displayName: 'Run Docker Container'
