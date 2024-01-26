@@ -20,11 +20,11 @@ jobs:
       dockerVersion: '17.09.0-ce'
       releaseType: 'stable'
 
-  - script: docker pull <your_container_image>:latest
+  - script: docker pull dynatrace/dynatrace-configuration-as-code:latest
     displayName: 'Pull Docker Image'
 
   - script: |
-      docker run -d --name my_container <your_container_image>:latest
+      docker run -d --name my_container dynatrace/dynatrace-configuration-as-code:latest
       sleep 10
     displayName: 'Run Docker Container'
 
