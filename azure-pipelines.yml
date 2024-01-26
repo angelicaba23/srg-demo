@@ -11,11 +11,11 @@ jobs:
 
   - task: CopyFiles@2
     inputs:
-      SourceFolder: '$(Build.SourcesDirectory)'  # Path to the root of your repository
-      Contents: 'monaco-demo/'  # Name of the file you want to copy
-      TargetFolder: '$(Agent.BuildDirectory)/doc/'  # Target folder in the Docker container
+      SourceFolder: '$(Build.SourcesDirectory)/monaco-demo'  # Path to the monaco-demo folder in your repository
+      Contents: '**/*'  # Match all files and subdirectories
+      TargetFolder: '/doc'  # Target folder in the Docker container
       OverWrite: true
-    displayName: 'Copy docs to Docker container'
+    displayName: 'Copy Docs to Docker container'
 
   - script: docker pull dynatrace/dynatrace-configuration-as-code:latest
     displayName: 'Pull Docker Image'
