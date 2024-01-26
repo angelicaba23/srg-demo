@@ -12,6 +12,6 @@ jobs:
     displayName: 'Pull Docker Image'
     
   - script: |
-      docker run dynatrace/dynatrace-configuration-as-code deploy version
+      docker run dynatrace/dynatrace-configuration-as-code version
       sleep 10
     displayName: 'Run Docker Container'
