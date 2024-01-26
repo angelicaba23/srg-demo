@@ -22,14 +22,8 @@ jobs:
 
   - script: docker pull dynatrace/dynatrace-configuration-as-code:latest
     displayName: 'Pull Docker Image'
-
+    
   - script: |
-      docker run -it --entrypoint monaco dynatrace/dynatrace-configuration-as-code version
-      sleep 10
-    displayName: 'Run Docker Container'
+      docker run --entrypoint /bin/sh dynatrace/dynatrace-configuration-as-code -c "echo $PATH && ls /usr/bin"
+    displayName: 'Inspect Docker Image'
 
-  - script: docker stop my_container
-    displayName: 'Stop Docker Container'
-
-  - script: docker rm my_container
-    displayName: 'Remove Docker Container'
