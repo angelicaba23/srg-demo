@@ -13,7 +13,7 @@ jobs:
     inputs:
       SourceFolder: '$(Build.SourcesDirectory)/monaco-demo'  # Path to the monaco-demo folder in your repository
       Contents: '**/*'  # Match all files and subdirectories
-      TargetFolder: '/doc'  # Target folder in the Docker container
+      TargetFolder: '$(Agent.BuildDirectory)/doc'  # Target folder in the Docker container
       OverWrite: true
     displayName: 'Copy Docs to Docker container'
 
