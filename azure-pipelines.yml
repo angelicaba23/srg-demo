@@ -1,11 +1,8 @@
 trigger:
 - main
 
-pr:
-- main
-
 jobs:
-- job: RunContainerTests
+- job: RunMonaco
   pool:
     vmImage: 'ubuntu-latest'
 
