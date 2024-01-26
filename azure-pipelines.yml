@@ -12,5 +12,5 @@ jobs:
     displayName: 'Pull Docker Image'
     
   - script: |
-      docker run  --mount type=bind,src="/",target=/monaco dynatrace/dynatrace-configuration-as-code deploy -d manifest.yaml
+      docker run --mount type=bind,src="/",target=/monaco dynatrace/dynatrace-configuration-as-code deploy -d /manifest.yaml
     displayName: 'Run Docker Container'
