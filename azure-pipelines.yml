@@ -20,9 +20,5 @@ jobs:
   - script: docker pull dynatrace/dynatrace-configuration-as-code:latest
     displayName: 'Pull Monaco Image'
     
-  - script: docker run --env TOKEN=$(DT_TOKEN) \
-      --env OAUTH_CLIENT_ID=$(DT_OAUTH_CLIENT_ID) \
-      --env OAUTH_CLIENT_SECRET=$(DT_OAUTH_CLIENT_SECRET) \
-      --mount type=bind,src="$(Agent.BuildDirectory)/doc/",target=/monaco \
-      dynatrace/dynatrace-configuration-as-code deploy -d manifest.yaml
+  - script: docker run --env TOKEN=$(DT_TOKEN) --env OAUTH_CLIENT_ID=$(DT_OAUTH_CLIENT_ID) --env OAUTH_CLIENT_SECRET=$(DT_OAUTH_CLIENT_SECRET) --mount type=bind,src="$(Agent.BuildDirectory)/doc/",target=/monaco dynatrace/dynatrace-configuration-as-code deploy -d manifest.yaml
     displayName: 'Run Monaco Container'
