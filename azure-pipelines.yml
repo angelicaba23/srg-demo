@@ -30,7 +30,8 @@ jobs:
 
   - script: |
       docker ps | grep my_container | grep -q " Up " || exit 1
-      docker exec my_container moanco deploy manifest.yaml || exit 1
+      docker exec my_container moanco deploy manifest.yaml > output.txt 2>&1 || exit 1
+      cat output.txt
     displayName: 'Execute moanco deploy inside Container'
 
   - script: docker stop my_container
