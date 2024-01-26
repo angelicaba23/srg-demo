@@ -19,6 +19,8 @@ jobs:
   - script: docker pull dynatrace/dynatrace-configuration-as-code:latest
     displayName: 'Pull Docker Image'
     
-  - script: docker run --entrypoint /bin/sh dynatrace/dynatrace-configuration-as-code:latest -c "find / -name monaco"
-    displayName: 'Search for Monaco executable'
+  - script: |
+      docker run --entrypoint /usr/local/bin/monaco dynatrace/dynatrace-configuration-as-code version
+      sleep 10
+    displayName: 'Run Docker Container'
 
