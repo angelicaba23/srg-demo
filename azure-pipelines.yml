@@ -20,21 +20,17 @@ jobs:
       dockerVersion: '17.09.0-ce'
       releaseType: 'stable'
 
-  - script: docker pull dynatrace/dynatrace-configuration-as-code:latest
+  - script: docker pull <your_container_image>:latest
     displayName: 'Pull Docker Image'
 
   - script: |
-      docker run -d --name my_container dynatrace/dynatrace-configuration-as-code:latest
+      docker run -d --name my_container <your_container_image>:latest
       sleep 10
-    env:
-      TOKEN: $(DT_TOKEN_ENV)
-      OAUTH_CLIENT_ID: $(DT_OAUTH_CLIENT_ID)
-      OAUTH_CLIENT_SECRET: $(DT_OAUTH_CLIENT_SECRET)
     displayName: 'Run Docker Container'
 
   - script: |
       docker ps | grep my_container | grep -q " Up " || exit 1
-      docker exec my_container moanco deploy manifest.yaml
+      docker exec my_container moanco deploy manifest.yaml || exit 1
     displayName: 'Execute moanco deploy inside Container'
 
   - script: docker stop my_container
