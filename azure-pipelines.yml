@@ -10,12 +10,12 @@ jobs:
   - checkout: self
 
   - task: CopyFiles@2
-    displayName: 'Copy manifest.yaml to Docker container'
     inputs:
       SourceFolder: '$(Build.SourcesDirectory)'  # Path to the root of your repository
       Contents: 'monaco-demo/'  # Name of the file you want to copy
       TargetFolder: '$(Agent.BuildDirectory)/doc/'  # Target folder in the Docker container
       OverWrite: true
+    displayName: 'Copy docs to Docker container'
 
   - script: docker pull dynatrace/dynatrace-configuration-as-code:latest
     displayName: 'Pull Docker Image'
